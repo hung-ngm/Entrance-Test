@@ -1,48 +1,36 @@
-// Viết hàm chuyển đổi các số nguyên về số La mã. Ví dụ nhập vào 6 => output là VI
-const RomanMatrix = [
-    [1000, 'M'],
-    [900, 'CM'],
-    [500, 'D'],
-    [400, 'CD'],
-    [100, 'C'],
-    [90, 'XC'],
-    [50, 'L'],
-    [40, 'XL'],
-    [10, 'X'],
-    [9, 'IX'],
-    [5, 'V'],
-    [4, 'IV'],
-    [1, 'I'],
-]
+// Viết một hàm nhập vào một mảng các số nguyên arr và một hàm f, đầu ra của nó là một mảng mới gồm các số nguyên chia hết cho 2, lấy element cuối cùng của mảng thỏa mãn điều kiện. (nhớ sử dụng tham số là hàm f)
 
-function Roman_Number_Converter (x){
-    if (x == 0){
-        return '';
-    }
-    for (let i = 0; i < RomanMatrix.length; i++){
-        if (x >= RomanMatrix[i][0]){
-            return RomanMatrix[i][1] + Roman_Number_Converter(x - RomanMatrix[i][0])
+const NumArr = [1,2,3,4,5,6,7,8,9,10,11,12]
+function dividebytwo(arr) { 
+    // f is a function
+	// output return new array include numbers divide by 2
+    // requirement: need to use function f
+   
+    let NewArr = arr.filter(x => x % 2 == 0);
+    console.log(NewArr[NewArr.length - 1]);
+    return NewArr;
+    
+    
+}
+
+console.log(dividebytwo(NumArr));
+
+// Viết một hàm nhập vào 2 mảng A1 và A2, đầu ra trả về một mảng mới chứa các phần tử không trùng nhau của hai mảng kia. Ví dụ A1 = [1, 2, "a"]; A2 = [1, 3, "b"] thì output ra được là [2, "a", "b"].
+const A1 = [1, 2, "a"]; 
+const A2 = [1, 3, "b"];
+function Uncommon_Element(Arr1, Arr2){
+    const Arr = []
+    for (let i = 0; i < Arr1.length;i++){
+        if (Arr2.includes(Arr1[i]) != true){
+            Arr.push(Arr1[i])
         }
     }
-}
-
-console.log(Roman_Number_Converter(900));
-
-//(Không sử dụng cầu điều kiện) Viết hàm kiểm tra danh sách các hộ gia đình có số điện tiêu thụ vượt quá 100 số mỗi tháng. Danh sách chứa các object có key và value tương ứng ví dụ {soNha : "10", soDien: 101}
-const Bill = [
-    {
-        soNha : "10", 
-        soDien: 101
-    },
-    {
-        soNha: "9",
-        soDien: 99
+    for (let j = 0; j < Arr2.length;j++){
+        if (Arr1.includes(Arr2[j]) != true){
+            Arr.push(Arr2[j])
+        }
     }
-]
-
-function Filter_Price(x){
-    return x.filter(f => f.soDien >= 100)
+   return Arr
 }
 
-console.log(Filter_Price(Bill));
-
+console.log(Uncommon_Element(A1, A2));
